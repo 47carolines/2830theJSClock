@@ -23,34 +23,53 @@
 			}
 		
 			#clock {
-				
+				position: relative;
+                width: 600px;
+                height: 600px;
 				margin: 20px auto 0 auto;
 				background: url(images/clockface.jpg);
-				
+				list-style: none;
 			}
 		
+            #sec, #min, #hour {
+                position: absolute;
+                width: 30px;
+                height: 600px;
+                top: 0;
+                left: 285px;
+                
+            }
 			
 		
 			#sec {
 				background: url(images/sechand_bear.png);
 				width: 300px;
 				left: 150px;
-				
+				z-index: 3;
 			}
 		   
 			#min {
 				background: url(images/minhand.png);
-				
+				z-index: 2;
 			}
 		   
 			#hour {
 				background: url(images/hourhand.png);
-				
+				z-index: 1;
 			}
 		</style>
 	
 		<script>
-	
+	       $(document).ready(function(){
+               setInterval(function(){
+                var seconds = new Date().getSeconds();
+                
+                var sdegree = seconds * 6;
+                var srotate = "rotate(" + sdegree + "deg)";
+
+                $("#sec").css({"transform": srotate});
+            }, 1000);
+           });
 			
 	
 		</script>
